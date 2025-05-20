@@ -43,7 +43,14 @@ const Header = () => {
           >
             Home
           </NavLink></li>
-        <li>
+     
+        <li><NavLink
+            to="/users"
+            className={({ isActive }) => isActive ? 'text-yellow-300 font-semibold' : 'hover:text-gray-200'}
+          >
+            Users
+          </NavLink></li>
+          <li>
         <NavLink
             to="/about"
             className={({ isActive }) => isActive ? 'text-yellow-300 font-semibold' : 'hover:text-gray-200'}
@@ -51,12 +58,6 @@ const Header = () => {
             About
           </NavLink>
         </li>
-        <li><NavLink
-            to="/users"
-            className={({ isActive }) => isActive ? 'text-yellow-300 font-semibold' : 'hover:text-gray-200'}
-          >
-            Users
-          </NavLink></li>
       </ul>
     </div>
     {/* <div className="navbar-end">
