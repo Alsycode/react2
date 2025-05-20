@@ -33,7 +33,7 @@ const UserDetail = () => {
     }
   
     return (
-        <div className='w-full flex justify-center items-center mt-10 '>
+        <div className='w-full flex justify-center items-center  h-screen '>
         <div className="card card-side bg-base-100 max-w-[700px] shadow-sm border border-white">
   <figure>
     <img
