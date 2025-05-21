@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
+
 const users = [
     { id: 1, name: 'John Doe', email: 'john.doe@example.com', imageSrc: 'https://picsum.photos/seed/user1/380/380', bio: 'Software engineer with a passion for building innovative web applications.' },
     { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', imageSrc: 'https://picsum.photos/seed/user2/380/380', bio: 'Graphic designer who loves creating vibrant, user-friendly interfaces.' },
@@ -21,44 +22,43 @@ const users = [
     { id: 18, name: 'Emma Lewis', email: 'emma.lewis@example.com', imageSrc: 'https://picsum.photos/seed/user18/380/380', bio: 'Event planner organizing unforgettable experiences.' },
     { id: 19, name: 'Liam Walker', email: 'liam.walker@example.com', imageSrc: 'https://picsum.photos/seed/user19/380/380', bio: 'Gamer and streamer sharing tips and epic moments.' },
     { id: 20, name: 'Chloe Harris', email: 'chloe.harris@example.com', imageSrc: 'https://picsum.photos/seed/user20/380/380', bio: 'Biologist researching marine ecosystems and conservation.' },
-  ];
-const UserDetail = () => {
+];
 
+const UserDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const user = users.find(u => u.id === parseInt(id));
-  
-    if (!user) {
-      return <div className="container mx-auto p-6">User not found</div>;
-    }
-  
-    return (
-        <div className='w-full flex justify-center items-center  h-screen  border-t'>
-        <div className="card card-side bg-base-100 max-w-[700px] shadow-sm border border-white">
-  <figure>
-    <img
-      src={user.imageSrc}
-      alt="Movie" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">{user.name}'s Details</h2>
-    <p className="text-lg mb-2"><strong>Email:</strong> {user.email}</p>
-    <p className="text-lg mb-4"><strong>Bio:</strong> {user.bio}</p>
-    <div className="card-actions justify-end">
-    <button
-          onClick={() => navigate('/users')}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Back to Users
-        </button>
-    </div>
-  </div>
-</div>
-        </div>
 
-    
+    if (!user) {
+        return <div className="container mx-auto p-4 sm:p-6">User not found</div>;
+    }
+
+    return (
+        <div className="w-full flex justify-center items-center min-h-screen p-4 sm:p-6">
+            <div className="card bg-base-100 w-full max-w-[700px] shadow-sm border border-gray-200 flex-col sm:card-side">
+                <figure className="w-full sm:w-1/2">
+                    <img
+                        src={user.imageSrc}
+                        alt={user.name}
+                        className="w-full h-48 sm:h-full object-cover"
+                    />
+                </figure>
+                <div className="card-body w-full sm:w-1/2 p-4 sm:p-6">
+                    <h2 className="card-title text-xl sm:text-2xl">{user.name}'s Details</h2>
+                    <p className="text-base sm:text-lg mb-2"><strong>Email:</strong> {user.email}</p>
+                    <p className="text-base sm:text-lg mb-4"><strong>Bio:</strong> {user.bio}</p>
+                    <div className="card-actions justify-end">
+                        <button
+                            onClick={() => navigate('/users')}
+                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm sm:text-base"
+                        >
+                            Back to Users
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
-  
 }
 
 export default UserDetail
